@@ -1,0 +1,21 @@
+[
+  { "id": 1, "title": "Sinners", "release_date": "2025-04-18", "rating": 7.6, "poster": "public/images/sinners.jpeg", "genres": "Horror" },
+  { "id": 2, "title": "Top Gun: Maverick", "release_date": "2022-05-27", "rating": 8.5, "poster": "public/images/topgun.jpeg", "genres": "Action, Drama" },
+  { "id": 3, "title": "Everything Everywhere All at Once", "release_date": "2022-03-11", "rating": 8.1, "poster": "public/images/everything.jpeg", "genres": "Action, Adventure, Comedy" },
+  { "id": 4, "title": "Black Panther: Wakanda Forever", "release_date": "2022-11-11", "rating": 7.2, "poster": "public/images/blackpanther2.jpeg", "genres": "Action, Adventure, Fantasy" },
+  { "id": 5, "title": "Doctor Strange in the Multiverse of Madness", "release_date": "2022-05-06", "rating": 7.0, "poster": "public/images/doctorstrange2.jpeg", "genres": "Action, Adventure, Fantasy" },
+  { "id": 7, "title": "The Batman", "release_date": "2022-03-04", "rating": 7.9, "poster": "public/images/thebatman.jpeg", "genres": "Action, Crime, Drama" },
+  { "id": 8, "title": "Thor: Love and Thunder", "release_date": "2022-07-08", "rating": 6.3, "poster": "public/images/thor4.jpeg", "genres": "Action, Adventure, Comedy" },
+  { "id": 9, "title": "Minions: The Rise of Gru", "release_date": "2022-07-01", "rating": 6.7, "poster": "public/images/minions2.jpeg", "genres": "Animation, Adventure, Comedy" },
+  { "id": 10, "title": "Lightyear", "release_date": "2022-06-17", "rating": 6.5, "poster": "public/images/lightyear.jpeg", "genres": "Animation, Action, Adventure" },
+  { "id": 11, "title": "Spider-Man: No Way Home", "release_date": "2021-12-17", "rating": 8.3, "poster": "public/images/spiderman3.jpeg", "genres": "Action, Adventure, Sci-Fi" },
+  { "id": 12, "title": "Dune", "release_date": "2021-10-22", "rating": 8.0, "poster": "public/images/dune.jpeg", "genres": "Adventure, Drama, Sci-Fi" },
+  { "id": 13, "title": "No Time to Die", "release_date": "2021-10-08", "rating": 7.4, "poster": "public/images/notimetodie.jpeg", "genres": "Action, Adventure, Thriller" },
+  { "id": 15, "title": "Ant-Man and the Wasp: Quantumania", "release_date": "2023-02-17", "rating": 6.2, "poster": "public/images/antman3.jpeg", "genres": "Action, Adventure, Comedy" },
+  { "id": 16, "title": "Oppenheimer", "release_date": "2023-07-21", "rating": 8.9, "poster": "public/images/oppenheimer.jpeg", "genres": "Biography, Drama, History" },
+  { "id": 17, "title": "Barbie", "release_date": "2023-07-21", "rating": 7.1, "poster": "public/images/barbie.jpeg", "genres": "Comedy, Adventure, Fantasy" },
+  { "id": 18, "title": "Guardians of the Galaxy Vol. 3", "release_date": "2023-05-05", "rating": 8.2, "poster": "public/images/gotg3.jpeg", "genres": "Action, Adventure, Comedy" },
+  { "id": 19, "title": "John Wick: Chapter 4", "release_date": "2023-03-24", "rating": 8.0, "poster": "public/images/johnwick4.jpeg", "genres": "Action, Crime, Thriller" },
+  { "id": 20, "title": "The Marvels", "release_date": "2023-11-10", "rating": 6.5, "poster": "public/images/themarvels.jpeg", "genres": "Action, Adventure, Sci-Fi" },
+  { "id": 21, "title": "Killers of the Flower Moon", "release_date": "2023-10-20", "rating": 8.7, "poster": "public/images/killersoftheflowermoon.jpeg", "genres": "Crime, Drama, History" }
+]

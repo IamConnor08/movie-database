@@ -2,7 +2,7 @@ import requests
 import sqlite3
 
 #add your own key
-api_key = 
+api_key = "8d310ba1c052dabe9dd4bbdda61a48ba"
 tmdb_url = "https://api.themoviedb.org/3"
 
 conn = sqlite3.connect("movie.db")

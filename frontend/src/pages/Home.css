@@ -1,0 +1,83 @@
+.search-bar-container {
+  display: flex;       /* makes it a flex container */
+  justify-content: center; /* centers horizontally */
+  align-items: center; /* centers vertically (if needed) */
+  gap: 0.5rem;         /* space between input and button */
+  margin-top: 2rem;
+}
+
+
+.search-button {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: none;
+  background-color: #646cff;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.search-button:hover {
+  background-color: #535bf2;
+}
+
+
+.search-bar {
+  padding: 0.5rem 1rem;
+  min-width: 300px;
+  width: auto;            
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.trending-movies {
+  margin-top: 3rem;
+  max-width: auto;  
+  margin-left: auto;     
+  margin-right: auto;     
+}
+
+.trending-movies h2 {
+  margin-bottom: 1rem;
+  color: black;
+}
+
+.scroller {
+  display: flex;
+  overflow-x: auto; /* horizontal scrolling */
+  gap: 1rem;       /* space between movie cards */
+  padding-bottom: 1rem; /* space below cards */
+}
+
+.movie-poster {
+  max-width: 200px; /* fixed width for each poster */
+  max-height: 300px;
+  flex-shrink: 0;   /* prevents shrinking */
+  border-radius: 8px;
+  
+  transition: transform 0.2s;
+  text-align: center;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.movie-poster img {
+  width: 200px;
+  height: 1250px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 8px;
+  display: block;
+}
+
+
+.movie-poster:hover {
+  transform: scale(1.05);
+}
+
+

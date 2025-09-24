@@ -1,0 +1,8 @@
+[
+  { "id": 1, "title": "Breaking Bad", "release_date": "2023-10-20", "rating": 8.7, "poster": "/images/brbad.jpeg", "genres": "Crime, Drama, History" },
+  { "id": 2, "title": "Stranger Things", "release_date": "2023-10-20", "rating": 8.7, "poster":  "/images/strangthings.jpeg", "genres": "Crime, Drama, History"},
+  { "id": 3, "title": "The Last of Us", "release_date": "2023-10-20", "rating": 8.7, "poster":  "/images/tlou.jpeg", "genres": "Crime, Drama, History" },
+  { "id": 4, "title": "The Mandalorian", "release_date": "2023-10-20", "rating": 8.7, "poster":  "/images/yoda.jpeg", "genres": "Crime, Drama, History" },
+  { "id": 5, "title": "The Witcher", "release_date": "2023-10-20", "rating": 8.7, "poster":  "/images/witch.jpeg", "genres": "Crime, Drama, History" },
+  { "id": 6, "title": "Loki", "release_date": "2023-10-20", "rating": 8.7, "poster":  "/images/loki.jpeg", "genres": "Crime, Drama, History"}
+]
