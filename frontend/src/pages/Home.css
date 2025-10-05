@@ -80,4 +80,8 @@
   transform: scale(1.05);
 }
 
+.movie-trailer:hover {
+  transform: scale(1.05);
+}
+
 

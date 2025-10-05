@@ -1,5 +1,5 @@
 import "./UpcomingFilms.css"
-import movieTrailers from "./movieTrailers";
+import movieTrailers from "./movieTrailersData";
 
 function UpcomingFilms() {
     return(

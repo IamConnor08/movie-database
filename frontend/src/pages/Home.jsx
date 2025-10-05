@@ -5,6 +5,7 @@ import UpcomingFilms from '../components/UpcomingFilms';
 import TrendingShows from '../components/TrendingShows';
 
 
+
 function Home() {
   const [query, setQuery] = useState('');
 
@@ -14,6 +15,7 @@ function Home() {
 
   return (
     <div className="home-container">
+    
     
 
       <div className="search-bar-container">
@@ -29,6 +31,7 @@ function Home() {
       <TrendingMovies />
       <UpcomingFilms />
       <TrendingShows />
+    
           
     </div>
   );

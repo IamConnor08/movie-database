@@ -9,7 +9,9 @@ function TVShows() {
     setQuery(e.target.value);
   };
     return (
+
     <div className="tvshows-container">
+      <h1>TV Shows</h1>
 
         <Filter />
         
