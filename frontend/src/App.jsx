@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Navbar from './components/NavBar';
 import Home from './pages/Home';
 import TVShows from './pages/TVShows';
+import Movies from './pages/Movies';
 
 
 
@@ -12,6 +13,8 @@ function App() {
     switch (currentPage) {
       case 'Home':
         return <Home />;
+      case 'Movies':
+        return <Movies />;
       case 'TV Shows':
         return <TVShows />;
       default:

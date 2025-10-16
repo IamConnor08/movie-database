@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Filter from '../components/filter';
+import Filter from '../components/tvFilter';
 
 
 function TVShows() {
