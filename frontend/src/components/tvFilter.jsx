@@ -188,18 +188,10 @@ function Filter () {
                         </button>
                     </div>
                 </div>
-
                     </div>
                 </div>
             </div>
-
-
-            
-
-
-
         </div>
     );
 }
-
 export default Filter;

@@ -14,14 +14,14 @@
 .scroller {
     padding-top: 1rem;
     display: flex;
-    overflow-x: auto; /* horizontal scrolling */
-    gap: 1rem;       /* space between movie cards */
-    padding-bottom: 1rem; /* space below cards */
+    overflow-x: auto;
+    gap: 1rem;      
+    padding-bottom: 1rem; 
 }
 
 .trailer-card {
-    min-width: 300px; /* fixed width for each poster */
-    flex-shrink: 0;   /* prevents shrinking */
+    min-width: 300px; 
+    flex-shrink: 0;   
     transition: transform 0.3s;
     border-radius: 8px;
     background: #f8f8f8;
