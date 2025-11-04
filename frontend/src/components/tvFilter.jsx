@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './Filter.css';
 
-function Filter () {  
+function Filter({ onFilter }) {
     const genres = [
     "Action & Adventure", "Animation", "Comedy", "Crime", "Documentary",
     "Drama", "Family", "Kids", "Mystery", "News", "Reality",
@@ -19,7 +19,7 @@ function Filter () {
         const clickedAlready = currentGenres.includes(genre)
 
         if (clickedAlready) {
-            const newGenres = currentGenres.filter((i) => i !== genre); 
+            const newGenres = currentGenres.filter((i) => i !== genre);
             setClickedGenres(newGenres);
         } else {
             const newGenres = currentGenres.concat(genre);
@@ -49,10 +49,10 @@ function Filter () {
     });
 
     const handleCheckboxChange = (optionName) => {
-    
+
         const currentOptions = checkboxOptions;
-    
-    
+
+
         const newOptions = {
             streaming: currentOptions.streaming,
             free: currentOptions.free,
@@ -60,7 +60,7 @@ function Filter () {
             buy: currentOptions.buy,
             ads: currentOptions.ads
         };
-    
+
         if (optionName === 'streaming') {
             newOptions.streaming = !currentOptions.streaming;
         } else if (optionName === 'free') {
@@ -72,8 +72,8 @@ function Filter () {
         } else if (optionName === 'ads') {
             newOptions.ads = !currentOptions.ads;
         }
-        
-        
+
+
         setCheckboxOptions(newOptions);
     };
 
@@ -82,9 +82,30 @@ function Filter () {
     const handleSortChange = (e) => {
         setSortBy(e.target.value);
     };
-    
+
+const handleSearch = async () => {
+    if (clickedGenres.length === 0) {
+    alert("Please select at least one genre");
+    return;
+    }
+
+  // Build query for multiple genres
+    const queryString = clickedGenres.map(g => `genre=${encodeURIComponent(g)}`).join("&");
+
+    try {
+    const response = await fetch(`http://127.0.0.1:5000/tvfilter?${queryString}`);
+    const data = await response.json();
+    console.log("Filtered TV shows:", data);
+    if (onFilter) {
+      onFilter(data); // Send results to TVShows.jsx
+    }
+    } catch (error) {
+    console.error("Error fetching filtered TV shows:", error);
+    }
+};
+
     return (
-        
+
         <div className="filter_panel card">
             <div className="filter">
                 <h3>Filters</h3>
@@ -107,9 +128,9 @@ function Filter () {
                     <h3>Rating</h3>
                     <div className="options-grid">
                         {ratings.map(rating => (
-                        <button 
-                            key={rating} 
-                            className={clickedRatings.includes(rating) ? "option-box selected" : "option-box"} 
+                        <button
+                            key={rating}
+                            className={clickedRatings.includes(rating) ? "option-box selected" : "option-box"}
                             onClick={() => ratingClick(rating)}
                             type="button"
                         >
@@ -182,9 +203,17 @@ function Filter () {
                     <h3>Search</h3>
                     <div className='filter'>
                         <button
-                        className={clickedGenres.length > 0 || clickedRatings.length > 0 || Object.values(checkboxOptions).some(val => val === true) || sortBy !== '' ? 'search-active' : ''}
+                            onClick={handleSearch}
+                            className={
+                            clickedGenres.length > 0 ||
+                            clickedRatings.length > 0 ||
+                            Object.values(checkboxOptions).some(val => val === true) ||
+                            sortBy !== ''
+                            ? 'search-active'
+                            : ''
+                        }
                         >
-                            Search
+                        Search
                         </button>
                     </div>
                 </div>
