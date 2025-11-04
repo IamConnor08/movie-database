@@ -51,6 +51,32 @@ def make_db():
 #function call to make db
 make_db()
 
+@app.route('/movies/search', methods=['GET'])
+def search_multiple_movies():
+    title = request.args.get('title')
+    if not title:
+        return jsonify({"error": "Title is required"}), 400
+    title = title.strip()
+
+    omdb_url = f"http://www.omdbapi.com/?s={title}&apikey={OMDB_KEY}"
+    response = requests.get(omdb_url)
+    data = response.json()
+
+    if data.get('Response') == 'False':
+        return jsonify({"error": "No movies found"}), 404
+
+    movies = []
+    for movie in data.get('Search', []):
+        movies.append({
+            'title': movie.get('Title'),
+            'year': movie.get('Year'),
+            'imdb_id': movie.get('imdbID'),
+            'type': movie.get('Type'),
+            'poster': movie.get('Poster')
+        })
+
+    return jsonify(movies), 200
+
 
 
 #how to handle GET requests using flask
@@ -163,6 +189,70 @@ def search_movies():
     "metacritic_rating": movie.get('Metascore'),
     "poster": movie.get('Poster')
 }), 201
+
+
+@app.route('/movies/top', methods=['GET'])
+def highest_rated_movies():
+    conn = sqlite3.connect(DATABASE)
+    cur = conn.cursor()
+
+    cur.execute("""
+        SELECT id, title, CAST(imdb_rating AS FLOAT) AS rating, poster
+        FROM movie
+        WHERE imdb_rating IS NOT NULL AND imdb_rating != 'N/A'
+        ORDER BY rating DESC
+        LIMIT 10
+    """)
+
+
+    rows = cur.fetchall()
+    conn.close()
+
+    result = []
+    for i in rows:
+        result.append({
+            "id": i[0],
+            "title": i[1],
+            "rating": i[2],
+            "poster": i[3]
+        })
+    return jsonify(result), 200
+
+
+@app.route('/movies/awards', methods=['GET'])
+def award_winning_movies():
+    conn = sqlite3.connect(DATABASE)
+    cur = conn.cursor()
+
+    cur.execute("""
+        SELECT
+        id, 
+        title,
+        poster,
+        CAST(
+            SUBSTR(
+                awards,
+                INSTR(awards, "wins") - 3, 3
+            ) AS INTEGER
+        ) AS wins
+    FROM movie
+    WHERE awards LIKE '%wins%'
+    ORDER BY wins DESC
+    LIMIT 10;
+    """)
+
+    rows = cur.fetchall()
+    conn.close()
+
+    movies = []
+    for row in rows:
+        movies.append({
+            'id': row[0],
+            'title': row[1],
+            'poster': row[2],
+            'wins': row[3]
+        })
+    return jsonify(movies), 200
 
 if __name__ == '__main__':
     #remove debug = true later

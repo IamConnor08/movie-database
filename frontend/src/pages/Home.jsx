@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import './Home.css';
-import TrendingMovies from '../components/TrendingMovies';
+import TopRatedMovies from '../components/TopRatedMovies';
 import UpcomingFilms from '../components/UpcomingFilms'; 
 import TrendingShows from '../components/TrendingShows';
 
@@ -34,7 +34,7 @@ function Home() {
         <button className="search-button" onClick={handleSearch}>Search</button>
       </div>
 
-      <TrendingMovies />
+      <TopRatedMovies />
       <UpcomingFilms />
       <TrendingShows />  
     </div>

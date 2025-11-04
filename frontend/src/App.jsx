@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import TVShows from './pages/TVShows';
 import Movies from './pages/Movies';
 import SearchResults from './pages/searchPage';
+import SearchMulti from './pages/MultiSearch';
 
 
 
@@ -16,7 +17,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/movies" element={<Movies />} />
           <Route path="/tvshows" element={<TVShows />} />
-          <Route path="/search/:title" element={<SearchResults />} />
+          <Route path="/search/:title" element={<SearchMulti />} />
+          <Route path="/movie/:title" element={<SearchResults />} />
         </Routes>
       </main>
     </div>

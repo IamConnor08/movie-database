@@ -1,19 +1,19 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom"
-import "./UpcomingFilms.css"
+import "./TopRated.css"
 
-function AwardWinningMovies() {
+function TopRatedMovies() {
     const [movies, setMovies] = useState([])
 
     useEffect(() => {
-        fetch("http://127.0.0.1:5000/movies/awards")
+        fetch("http://127.0.0.1:5000/movies/top")
             .then(res => res.json())
             .then(data => setMovies(data))
             .catch(err => console.error("Failed", err));
     }, [])
     return (
         <div className="movies">
-            <h2>Most Awarded Movies</h2>
+            <h2>Top Rated IMDb</h2>
             <div className="scroller">
                 {movies.map((movie) => (
                     <Link
@@ -29,7 +29,7 @@ function AwardWinningMovies() {
                             />
                             <div className="movie-info">
                                 <p className="movie-title">{movie.title}</p>
-                                <p className="movie-rating">🏆 {movie.wins}</p>
+                                <p className="movie-rating">⭐ {movie.rating}</p>
                             </div>
                         </div>
                     </Link>
@@ -39,4 +39,4 @@ function AwardWinningMovies() {
     );
 }
 
-export default AwardWinningMovies;
+export default TopRatedMovies;

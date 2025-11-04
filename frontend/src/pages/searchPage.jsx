@@ -1,5 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import './searchPage.css'
+
 
 function SearchResults() {
     //gets title from url
@@ -45,18 +47,40 @@ function SearchResults() {
     },  [title]);
 
         //render page
-        return (
-            <div style={{ padding: '1rem' }}>
-                <h2>Search Results for "{title}"</h2>
-                {error && <p style={{ color: 'red' }}>{error}</p>}
-                {movie && (
-                    <div className="movie-result">
-                    <h3>{movie.title}</h3>
-                    <p>{movie.year}</p>
-                    {movie.poster && <img src={movie.poster} alt={movie.title} />}
+    return (
+        <div className="movie-page">
+            <h2>Search Results for "{title}"</h2>
+
+            {error && <p style={{ color: "red" }}>{error}</p>}
+
+            {movie && (
+                <div className="movie-details">
+                    <img 
+                        src={movie.poster} 
+                        alt={movie.title} 
+                        className="movie-poster"
+                    />
+
+                    <div className="movie-info">
+                        <h1>{movie.title}</h1>
+                        <p><strong>Year:</strong> {movie.year}</p>
+                        <p><strong>Rated:</strong> {movie.rated}</p>
+                        <p><strong>Runtime:</strong> {movie.runtime}</p>
+
+                        <p><strong>Genres:</strong> {movie.genre}</p>
+                        <p><strong>Director:</strong> {movie.director}</p>
+                        <p><strong>Actors:</strong> {movie.actors}</p>
+
+                        <p><strong>Plot:</strong> {movie.plot}</p>
+
+                        <p><strong>IMDB:</strong> ⭐ {movie.imdb_rating}</p>
+                        <p><strong>Rotten Tomatoes:</strong> {movie.rotten_tomatoes_rating}</p>
+                        <p><strong>Metascore:</strong> {movie.metacritic_rating}</p>
+                    </div>
                 </div>
             )}
         </div>
     );
 }
+
 export default SearchResults;
