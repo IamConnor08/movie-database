@@ -349,50 +349,57 @@ def filter_tvshows():
 
     return jsonify(shows), 200
 
+@app.route('/actorphoto_tvmaze', methods=['GET'])
+def tvmaze_actor_photo():
+    name = request.args.get('name')
+    if not name:
+        return jsonify({"error": "No actor name provided"}), 400
+
+    search_url = f"https://api.tvmaze.com/search/people?q={name}"
+    result = requests.get(search_url).json()
+
+    if not result:
+        return jsonify({"photo": None})
+
+    person = result[0]["person"]
+    image = person.get("image", {}).get("medium")
+
+    return jsonify({
+        "name": person.get("name"),
+        "photo": image
+    })
+
 @app.route('/people', methods=['GET'])
 def get_people():
     conn = sqlite3.connect(DATABASE)
     cur = conn.cursor()
 
-    # Collect movie people
-    cur.execute("SELECT title, actors, director, writer FROM movie")
+    # Get all actors, directors, writers from movies
+    cur.execute("SELECT actors, director, writer FROM movie")
     movie_people = cur.fetchall()
 
-    # Collect TV show people
-    cur.execute("SELECT title, actors, director, writer FROM tvshow")
+    # Get all actors, directors, writers from tv shows
+    cur.execute("SELECT actors, director, writer FROM tvshow")
     tv_people = cur.fetchall()
 
     conn.close()
 
-    all_people = []
+    all_people = set()
 
-    # Function to add entries with roles
-    def add_person_entry(person_list, title, role_type):
-        for person in person_list:
-            cleaned = person.strip()
-            if cleaned:
-                all_people.append({
-                    "name": cleaned,
-                    "role": role_type,
-                    "title": title
-                })
+    # Add all names from DB
+    for entry in movie_people + tv_people:
+        for field in entry:
+            if field:
+                # Each field may contain multiple names separated by commas
+                names = field.split(',')
+                for name in names:
+                    name = name.strip()
+                    if name:
+                        all_people.add(name)
 
-    # Go through movies
-    for title, actors, director, writer in movie_people + tv_people:
-        if actors:
-            add_person_entry(actors.split(','), title, "Actor")
-        if director:
-            add_person_entry(director.split(','), title, "Director")
-        if writer:
-            add_person_entry(writer.split(','), title, "Writer")
-
-    # Remove duplicates (same name, role, title)
-    unique_people = {f"{p['name']}|{p['role']}|{p['title']}": p for p in all_people}
-    sorted_people = sorted(unique_people.values(), key=lambda x: x["name"])
-
-    return jsonify(sorted_people)
+    # Return sorted list
+    return jsonify(sorted(list(all_people))), 200
 
 if __name__ == '__main__':
     #remove debug = true later
     app.run(debug=True)
-
